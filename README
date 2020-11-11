@@ -1,0 +1,77 @@
+Nume: Dragne Lavinia-Stefana
+Grupa: 324 CA
+
+		INTRODUCERE IN ORGANIZAREA CALCULATOARELOR SI LIMBAJ DE ASAMBLARE
+					Tema #1 - "Printf"
+
+
+	Continutul proiectului este urmatorul:
+
+	-tema1.c contine codul sursa al programului corespunzator Task-ului;
+
+	-acest fisier README.
+
+	Prezentarea solutiei:
+
+	Implementare:
+
+	Semnificatia functiilor:
+
+	1. Functia get_digits primeste un parametru de tip long si prin impartiri repetate la 10
+determina numarul de cifre din reprezentarea acestuia in baza 10.
+
+	2. Functia get_hex_digits primeste un parametru de tip unsigned int si prin impartiri
+repetate la 16 determina numarul de cifre din reprezentarea acestuia in hexazecimal.
+
+	3. Functia int_to_string primeste ca si parametru un long si intoarce scrierea acestuia
+cifra cu cifra intr-un buffer. Ma folosesc de functia get_digits pentru a determina numarul de cifre
+ale numarului si a aloca dinamic buffer-ul, exact de dimensiunea dorita. Tin cont de '\0' de pe ultima
+pozitie si de '-', in cazul in care numarul primit este negativ. Construiesc scrierea numarului
+extragand cifra cu cifra de la coada la cap si convertind in caracter. Adaug '\0' la final si '-'
+in cazul in care numarul este negativ. Astfel se obtine numarul scris in ordine inversa, pentru care
+ulterior fac reverse si interschimb caracterele de la inceput cu cele de la final, pe rand. Cazul in
+care primesc numarul 0 este tratat separat.
+
+	4. Functia hex_to_string primeste ca si parametru un unsigned int si intoarce scrierea
+acestuia caracter cu caracter in hexazecimal, intr-un buffer. Ma folosesc de functia get_hex_digits 
+pentru a determina numarul de cifre ale numarului si a aloca dinamic buffer-ul, exact de dimensiunea
+dorita. Tin cont de '\0' de pe ultima pozitie. Construiesc scrierea numarului extragand cifra cu
+cifra, de la coada la cap si convertind in hexa, tinand cont daca caracterul este o cifra
+sau o litera de la a la f. Astfel se obtine numarul scris in ordine inversa, ca si la functia
+anterioara. Ulterior fac reverse si interschimb caracterele de la inceput cu cele de la final, pe
+rand.
+
+	5. Functia iocla_printf, prin intermediul variabilei num_bytes, intoarce numarul de caractere
+afisate. Primul argument al functiei este retinut in string-ul "format". Cu un contor i, parcurg
+acest string pana la intalnirea lui "%". Printez, cu ajutorul functiei date write_stdout, string-ul
+de la inceput pana la prima aparitie a lui "%" si cresc numarul de bytes printati, folosindu-ma de
+variabila num_bytes. Daca string-ul nu a fost parcurs inca pana la final, inseamna ca pe pozitia
+actuala se afla caracterul "%". Verific ce se afla pe pozitia urmatoare si in functie de
+specificatorul primit, citesc un nou parametru dat functiei. Tinand cont de acesta, apelez una din
+functiile de convertire intr-un string ale unui int sau unsigned int si scriu cu ajutorul functiei
+write_stdout rezultatul interpretarii specificatorului. Ulterior, trec de "%" si caracterul lui
+urmator. In cazul in care string-ul "format" s-a terminat cu "%" sau unul din specificatori nu
+este unul conform, functia va returna -1. Retin pozitia primului element din "format" inca nescris/
+neinterpretat, in variabila prev si parcurg string-ul, in cautarea unui nou "%". Variabila length
+retine lungimea sirului de caractere dintre 2 "%" consecutivi sau dintre "%" si '\0'. In final,
+scriu sirul de lungime length si maresc numarul de bytes scrisi, folosind variabila num_bytes. Ciclul
+continua pana se ajunge la finalul string-ului "format".
+
+
+	Referinte:
+
+	Pentru construirea functiei int_to_string m-am folosit de urmatoarele 2 site-uri:
+
+	1. https://www.go4expert.com/articles/converting-integer-string-c-sprintf-t28037/
+	2. https://stackoverflow.com/questions/3982320/convert-integer-to-string-without-access-to-libraries
+
+	Pentru construirea functiei hex_to_string m-am folosit de site-ul:
+
+	3. https://www.quora.com/How-can-I-convert-from-decimal-to-hexadecimal-in-C-language
+
+
+
+
+
+
+
